@@ -7,7 +7,10 @@ stored here mainly so I don't have to always look up how to do it.
 
 tl;dr:
 
-```
+```sh
 ./docker-image-build.sh
 ./docker-image-run.sh
+cd poky
+source oe-init-build-env build
+bitbake core-image-minimal
 ```
