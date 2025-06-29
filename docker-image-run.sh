@@ -48,4 +48,4 @@ docker run -it --rm \
     --mount type=bind,source=$WORKDIR,target=$WORKDIR \
     --user $(id -u):$(id -g) \
     --workdir $WORKDIR \
-    yocto-build:scarthgap $*
+    yocto-build-24.04:scarthgap $*

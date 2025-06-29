@@ -1,0 +1,84 @@
+FROM ubuntu:24.04
+
+ARG DEBIAN_FRONTEND=noninteractive
+ARG LOCALE=en_US.UTF-8
+
+ENV LANG=${LOCALE}
+ENV TZ=Europe/Berlin
+
+# Add a way to know when we are running inside Docker or not.
+# build-all.sh prevents builds that don't use Docker.
+ENV INSIDE_DOCKER=1
+
+# ---------------------------------------------------------------------------
+# System-wide installs:
+# Do the heaviest layers first (apt install and MCUXpresso)
+# ---------------------------------------------------------------------------
+
+# Use a faster mirror (replace with yours)
+# TODO: Use squid-deb-proxy or apt-cacher-ng to cache on fast local network
+ARG UBUNTU_MIRROR=mirror.dogado.de/ubuntu/
+RUN sed -i "s%archive.ubuntu.com%${UBUNTU_MIRROR}%" /etc/apt/sources.list
+
+# RUN sed -i -e 's/archive.ubuntu.com\|security.ubuntu.com/old-releases.ubuntu.com/g' /etc/apt/sources.list
+
+RUN apt update && \
+    apt upgrade -y && \
+    apt install -y apt-utils
+
+RUN apt install -y \
+    bash-completion \
+    bc \
+    bison \
+    build-essential \
+    byobu \
+    chrpath \
+    cpio \
+    curl \
+    debianutils \
+    diffstat \
+    file \
+    flex \
+    gawk \
+    git \
+    git-core \
+    git-lfs \
+    iputils-ping \
+    keychain \
+    libegl1 \
+    libncurses-dev \
+    libsdl1.2-dev \
+    locales \
+    lz4 \
+    nano \
+    ninja-build \
+    pylint \
+    python-is-python3 \
+    python3 \
+    python3-git \
+    python3-jinja2 \
+    python3-pexpect \
+    python3-pip \
+    rsync \
+    shellcheck \
+    silversearcher-ag \
+    socat \
+    sudo \
+    texinfo \
+    unzip \
+    wget \
+    xterm \
+    xxd \
+    xz-utils \
+    zstd
+
+RUN apt install -y python3-openssl python3-pycryptodome
+
+# Generate locales and use it
+RUN locale-gen ${LOCALE}
+
+# Yocto needs 'source' command for setting up the build environment, so replace
+# the 'sh' alias to 'bash' instead of 'dash'.
+# RUN rm /bin/sh && ln -s bash /bin/sh
+
+RUN chsh -s /bin/bash

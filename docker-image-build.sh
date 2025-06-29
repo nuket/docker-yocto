@@ -10,7 +10,7 @@
 #
 # using the pre-built Docker image.
 
-docker build -f sources/docker/Dockerfile-22.04 -t yocto-build:scarthgap .
+docker build -f sources/docker/Dockerfile-24.04 -t yocto-build-24.04:scarthgap .
 
 if [[ $? -eq "0" ]]; then
     echo
