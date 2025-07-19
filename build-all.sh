@@ -7,7 +7,7 @@
 # ./docker-image-run.sh ./build-all.sh
 
 # echo
-# echo "Building:"
+# echo "Building (TI):"
 # ./get-revs.sh
 
 if [[ ! $INSIDE_DOCKER ]]; then
@@ -15,12 +15,20 @@ if [[ ! $INSIDE_DOCKER ]]; then
     exit 0
 fi
 
-if [[ -d poky/build/conf ]]; then
+echo "Start running in $(pwd)"
+
+BUILDFOLDER=build-ebp001-ti
+
+set -x
+git rev-parse HEAD
+git submodule status
+set +x
+
+if [[ -d $BUILDFOLDER/conf ]]; then
     echo
     echo "Use existing build folder"
 
-    cd poky
-    source oe-init-build-env build
+    source sources/poky/oe-init-build-env $BUILDFOLDER
 
     echo
     echo "Running next commands in folder: $(pwd)"
@@ -29,7 +37,7 @@ if [[ -d poky/build/conf ]]; then
     echo "core-image-minimal Build started:  $(date)" | tee -a build-benchmarks.txt
 
     # Adjust the thread values to make best use of your machine.
-    MACHINE=your-machine bitbake core-image-minimal
+    bitbake core-image-minimal
 
     echo
     echo "core-image-minimal Build finished: $(date)" | tee -a build-benchmarks.txt
