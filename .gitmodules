@@ -13,6 +13,12 @@
 [submodule "sources/meta-arm"]
 	path = sources/meta-arm
 	url = git@gitlab.cds.testo:devices/platform/embedded_platform/yocto-mirrors/meta-arm
+	branch = scarthgap
 [submodule "sources/meta-clang"]
 	path = sources/meta-clang
 	url = git@gitlab.cds.testo:devices/platform/embedded_platform/yocto-mirrors/meta-clang.git
+	branch = scarthgap
+[submodule "sources/meta-openembedded"]
+	path = sources/meta-openembedded
+	url = git@gitlab.cds.testo:devices/platform/embedded_platform/yocto-mirrors/meta-openembedded
+	branch = scarthgap
