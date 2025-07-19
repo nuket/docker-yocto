@@ -1,0 +1,12 @@
+[submodule "sources/poky"]
+	path = sources/poky
+	url = git@gitlab.cds.testo:devices/platform/embedded_platform/yocto-mirrors/poky
+	branch = scarthgap
+[submodule "sources/meta-arago"]
+	path = sources/meta-arago
+	url = git@gitlab.cds.testo:devices/platform/embedded_platform/yocto-mirrors/meta-arago
+	branch = scarthgap
+[submodule "sources/meta-ti"]
+	path = sources/meta-ti
+	url = git@gitlab.cds.testo:devices/platform/embedded_platform/yocto-mirrors/meta-ti
+	branch = scarthgap
