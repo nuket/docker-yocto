@@ -22,3 +22,7 @@
 	path = sources/meta-openembedded
 	url = git@gitlab.cds.testo:devices/platform/embedded_platform/yocto-mirrors/meta-openembedded
 	branch = scarthgap
+[submodule "sources/meta-testo-userspace"]
+	path = sources/meta-testo-userspace
+	url = git@gitlab.cds.testo:devices/platform/embedded_platform/yocto-mirrors/testo-meta-testo-userspace.git
+	branch = main
