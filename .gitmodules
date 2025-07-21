@@ -29,3 +29,7 @@
 [submodule "sources/meta-qt6"]
 	path = sources/meta-qt6
 	url = git@gitlab.cds.testo:devices/platform/embedded_platform/yocto-mirrors/meta-qt6
+[submodule "sources/meta-swupdate"]
+	path = sources/meta-swupdate
+	url = git@gitlab.cds.testo:devices/platform/embedded_platform/yocto-mirrors/meta-swupdate
+	branch = scarthgap
