@@ -37,7 +37,7 @@ if [[ -d $BUILDFOLDER/conf ]]; then
     echo "core-image-minimal Build started:  $(date)" | tee -a build-benchmarks.txt
 
     # Adjust the thread values to make best use of your machine.
-    bitbake core-image-minimal
+    bitbake core-image-minimal testo-debug-image
 
     echo
     echo "core-image-minimal Build finished: $(date)" | tee -a build-benchmarks.txt
